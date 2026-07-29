@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Santenmoku P-Gate Protocol | HUD Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          boxShadow: {
+            glow: '0 0 0 1px rgba(16,185,129,.25), 0 0 24px rgba(6,182,212,.16), 0 0 48px rgba(16,185,129,.10)',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top, rgba(16,185,129,0.15), transparent 28%),
+        radial-gradient(circle at 80% 10%, rgba(6,182,212,0.12), transparent 24%),
+        linear-gradient(180deg, #020617 0%, #030712 42%, #020617 100%);
+    }
+
+    .hud-grid {
+      background-image:
+        linear-gradient(rgba(148,163,184,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148,163,184,0.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.95));
+    }
+
+    .glass {
+      background: rgba(2, 6, 23, 0.68);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      backdrop-filter: blur(14px);
+    }
+
+    .neon-border {
+      box-shadow:
+        0 0 0 1px rgba(34,197,94,.24),
+        0 0 36px rgba(6,182,212,.12);
+    }
+
+    .step-button[aria-current="true"] {
+      background: linear-gradient(135deg, rgba(16,185,129,0.28), rgba(6,182,212,0.24));
+      color: white;
+      border-color: rgba(16,185,129,0.60);
+      box-shadow: 0 0 0 1px rgba(16,185,129,0.55), 0 0 24px rgba(16,185,129,0.25);
+      transform: translateY(-1px);
+    }
+
+    .badge {
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .pulse {
+      animation: pulseGlow 2.2s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 1px rgba(34,197,94,.24), 0 0 18px rgba(16,185,129,.14); }
+      50% { box-shadow: 0 0 0 1px rgba(34,197,94,.42), 0 0 28px rgba(16,185,129,.30); }
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-100">
+  <div class="hud-grid pointer-events-none fixed inset-0 opacity-60"></div>
+
+  <main class="relative mx-auto flex min-h-screen max-w-7xl flex-col px-4 py-6 sm:px-6 lg:px-8">
+    <header class="glass neon-border relative overflow-hidden rounded-3xl px-6 py-6 sm:px-8">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/70 to-transparent"></div>
+      <div class="absolute right-0 top-0 h-32 w-32 -translate-y-10 translate-x-10 rounded-full bg-cyan-400/10 blur-3xl"></div>
+      <div class="absolute left-0 top-0 h-32 w-32 -translate-y-8 -translate-x-10 rounded-full bg-emerald-400/10 blur-3xl"></div>
+
+      <div class="flex flex-col gap-5">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <p class="badge text-xs font-semibold tracking-[0.35em] text-emerald-300/80">SilverVine HUD // Santenmoku</p>
+            <h1 class="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-4xl">
+              Santenmoku P-Gate Protocol
+            </h1>
+            <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-300 sm:text-base">
+              A standalone visualizer for plan-first guardrails, stage-gated confirmations, and human sovereignty.
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-emerald-400/25 bg-emerald-400/10 px-4 py-3 text-right">
+            <p class="text-xs uppercase tracking-[0.3em] text-emerald-200/80">Active Stage</p>
+            <p id="stageLabel" class="mt-1 text-lg font-semibold text-white">Step 0 / Lv.0</p>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <div class="flex flex-wrap gap-2" id="stepper" aria-label="P-Gate stage switcher"></div>
+          <div class="h-2 overflow-hidden rounded-full bg-slate-800/80">
+            <div id="progressBar" class="h-full rounded-full bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-300 transition-all duration-300" style="width: 25%"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="mt-6 grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
+      <div class="glass neon-border rounded-3xl p-5 sm:p-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-700/70 pb-4">
+          <div>
+            <p id="stageEyebrow" class="badge text-xs font-semibold tracking-[0.35em] text-cyan-300/80">Bootstrap Gate</p>
+            <h2 id="stageTitle" class="mt-2 text-2xl font-semibold text-white">Step 0 / Lv.0</h2>
+          </div>
+          <div id="stageState" class="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-sm font-medium text-emerald-200">
+            Default: Y/n
+          </div>
+        </div>
+
+        <div id="stageContent" class="mt-5"></div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="glass neon-border rounded-3xl p-5 sm:p-6">
+          <p class="badge text-xs font-semibold tracking-[0.35em] text-emerald-300/80">HUD Signal</p>
+          <div class="mt-4 space-y-4">
+            <div class="rounded-2xl border border-slate-700/80 bg-slate-950/70 p-4">
+              <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Protocol State</p>
+              <p id="signalState" class="mt-2 text-lg font-semibold text-white">Bootstrap ready</p>
+            </div>
+            <div class="rounded-2xl border border-slate-700/80 bg-slate-950/70 p-4">
+              <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Execution Guardrail</p>
+              <p class="mt-2 text-sm leading-6 text-slate-300">
+                The mockup is intentionally self-contained. Click a stage to inspect how the protocol changes the human-AI decision surface.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass neon-border rounded-3xl p-5 sm:p-6">
+          <p class="badge text-xs font-semibold tracking-[0.35em] text-cyan-300/80">Legend</p>
+          <div class="mt-4 space-y-3 text-sm text-slate-300">
+            <div class="flex items-center gap-3">
+              <span class="h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_18px_rgba(16,185,129,.9)]"></span>
+              <span>Positive path / approved action</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="h-2.5 w-2.5 rounded-full bg-cyan-400 shadow-[0_0_18px_rgba(6,182,212,.9)]"></span>
+              <span>Verification / discussion state</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="h-2.5 w-2.5 rounded-full bg-amber-400 shadow-[0_0_18px_rgba(251,191,36,.9)]"></span>
+              <span>HALT / human confirmation required</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    const stageSpecs = [
+      {
+        id: 0,
+        step: 'Step 0 / Lv.0',
+        title: 'Bootstrap Gate',
+        state: 'Default: [Y/n]',
+        label: 'Bootstrap Gate',
+        progress: 25,
+        signal: 'Bootstrap ready',
+        render() {
+          return `
+            <div class="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
+              <div class="space-y-4">
+                <div class="rounded-3xl border border-emerald-400/30 bg-emerald-400/10 p-5">
+                  <div class="flex flex-wrap items-center justify-between gap-3">
+                    <p class="badge text-xs font-semibold tracking-[0.35em] text-emerald-300/80">Step 0 / Lv.0</p>
+                    <span class="rounded-full border border-emerald-400/30 bg-slate-950/60 px-3 py-1 text-xs font-medium text-emerald-200">Y/n default highlight</span>
+                  </div>
+                  <p class="mt-4 text-2xl font-semibold text-white">Is this your first time setting up?</p>
+                  <p class="mt-3 max-w-2xl text-sm leading-6 text-slate-300">
+                    The bootstrap gate invites a human-led setup handshake before any guardrail actions are executed.
+                  </p>
+                  <div class="mt-5 flex flex-wrap gap-3 font-mono text-sm">
+                    <span class="rounded-full border border-emerald-400/50 bg-emerald-400/15 px-4 py-2 text-emerald-200">[Y] Yes</span>
+                    <span class="rounded-full border border-slate-700 bg-slate-950/70 px-4 py-2 text-slate-400">[n] No</span>
+                  </div>
+                </div>
+
+                <div class="rounded-3xl border border-slate-700/80 bg-slate-950/70 p-5">
+                  <p class="badge text-xs font-semibold tracking-[0.35em] text-cyan-300/80">Setup Note</p>
+                  <p class="mt-3 text-sm leading-6 text-slate-300">
+                    Step 0 is the human confirmation layer for first-time initialization, keeping the workflow calm and reversible from the start.
+                  </p>
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <div class="rounded-3xl border border-slate-700/80 bg-slate-950/80 p-5">
+                  <p class="badge text-xs font-semibold tracking-[0.35em] text-slate-400">Signal Readout</p>
+                  <div class="mt-4 space-y-3 font-mono text-sm">
+                    <div class="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/70 px-3 py-2">
+                      <span class="text-slate-400">Gate Mode</span><span class="text-emerald-300">BOOTSTRAP</span>
+                    </div>
+                    <div class="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/70 px-3 py-2">
+                      <span class="text-slate-400">Default Choice</span><span class="text-white">[Y/n]</span>
+                    </div>
+                    <div class="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/70 px-3 py-2">
+                      <span class="text-slate-400">Human State</span><span class="text-emerald-300">READY</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="rounded-3xl border border-emerald-400/20 bg-emerald-400/8 p-5">
+                  <p class="text-sm font-semibold text-emerald-200">Safe-first guidance</p>
+                  <p class="mt-2 text-sm leading-6 text-slate-300">
+                    Confirm the environment, choose the language loader, and proceed only when the first-time setup question feels correct.
+                  </p>
+                </div>
+              </div>
+            </div>`;
+        },
+      },
+      {
+        id: 1,
+        step: 'Lv.1',
+        title: 'Cognitive Acknowledge Gate',
+        state: 'Default: [y/N]',
+        label: 'Cognitive Acknowledge Gate',
+        progress: 50,
+        signal: 'Halt required',
+        render() {
+          return `
+            <div class="grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
+              <div class="space-y-4">
+                <div class="rounded-3xl border border-amber-400/30 bg-amber-400/8 p-5">
+                  <div class="flex flex-wrap items-center justify-between gap-3">
+                    <p class="badge text-xs font-semibold tracking-[0.35em] text-amber-300/90">Lv.1 / ACKNOWLEDGE</p>
+                    <span class="rounded-full border border-amber-400/30 bg-slate-950/60 px-3 py-1 text-xs font-medium text-amber-200">HALT until confirmed</span>
+                  </div>
+                  <p class="mt-4 text-2xl font-semibold text-white">Target domain check: <span class="text-cyan-300">slivervinelabs.com</span> vs <span class="text-rose-300">slivervine.xyz</span></p>
+                  <p class="mt-3 text-sm leading-6 text-slate-300">
+                    The acknowledge gate verifies that the canonical target and domain boundary are not being mixed. A mismatch should pause execution and force a human review.
+                  </p>
+                  <div class="mt-5 flex flex-wrap gap-3 font-mono text-sm">
+                    <span class="rounded-full border border-amber-400/50 bg-amber-400/15 px-4 py-2 text-amber-200">[y] Continue</span>
+                    <span class="rounded-full border border-rose-400/50 bg-rose-400/15 px-4 py-2 text-rose-200">[N] HALT</span>
+                  </div>
+                </div>
+
+                <div class="rounded-3xl border border-slate-700/80 bg-slate-950/70 p-5">
+                  <p class="badge text-xs font-semibold tracking-[0.35em] text-cyan-300/80">Boundary Warning</p>
+                  <p class="mt-3 text-sm leading-6 text-slate-300">
+                    If the agent sees the wrong target domain, it should stop, surface the discrepancy, and request confirmation before any write action continues.
+                  </p>
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <div class="rounded-3xl border border-slate-700/80 bg-slate-950/80 p-5">
+                  <p class="badge text-xs font-semibold tracking-[0.35em] text-slate-400">State Monitor</p>
+                  <div class="mt-4 space-y-3 font-mono text-sm">
+                    <div class="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/70 px-3 py-2">
+                      <span class="text-slate-400">Mode</span><span class="text-amber-300">ACKNOWLEDGE</span>
+                    </div>
+                    <div class="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/70 px-3 py-2">
+                      <span class="text-slate-400">Default Choice</span><span class="text-white">[y/N]</span>
+                    </div>
+                    <div class="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/70 px-3 py-2">
+                      <span class="text-slate-400">Action</span><span class="text-rose-300">HALT</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="rounded-3xl border border-rose-400/20 bg-rose-400/8 p-5">
+                  <p class="text-sm font-semibold text-rose-200">Default state</p>
+                  <p class="mt-2 text-sm leading-6 text-slate-300">
+                    When the target does not match, the protocol defaults to a safe stop rather than a silent continuation.
+                  </p>
+                </div>
+              </div>
+            </div>`;
+        },
+      },
+      {
+        id: 2,
+        step: 'Lv.2',
+        title: 'Semantic Verification & Planning Intercept',
+        state: 'Default: [y/N]',
+        label: 'Semantic Verification & Planning Intercept',
+        progress: 75,
+        signal: 'Discuss before mutation',
+        render() {
+          return `
+            <div class="space-y-6">
+              <div class="grid gap-6 lg:grid-cols-2">
+                <div class="rounded-3xl border border-cyan-400/30 bg-cyan-400/8 p-5">
+                  <div class="flex items-center justify-between gap-3">
+                    <p class="badge text-xs font-semibold tracking-[0.35em] text-cyan-300/80">Raw Dump</p>
+                    <span class="rounded-full border border-cyan-400/30 bg-slate-950/60 px-3 py-1 text-xs font-medium text-cyan-200">Unsorted input</span>
+                  </div>
+                  <ul class="mt-4 space-y-3 text-sm leading-6 text-slate-300">
+                    <li>• Untagged thoughts, rough notes, and unverified assumptions</li>
+                    <li>• Any path mutation or content rewrite that still needs a plan</li>
+                    <li>• Human intent that has not been mapped into a stable action matrix</li>
+                  </ul>
+                </div>
+
+                <div class="rounded-3xl border border-emerald-400/30 bg-emerald-400/8 p-5">
+                  <div class="flex items-center justify-between gap-3">
+                    <p class="badge text-xs font-semibold tracking-[0.35em] text-emerald-300/80">AI Sorted Mapping</p>
+                    <span class="rounded-full border border-emerald-400/30 bg-slate-950/60 px-3 py-1 text-xs font-medium text-emerald-200">Action map</span>
+                  </div>
+                  <ul class="mt-4 space-y-3 text-sm leading-6 text-slate-300">
+                    <li>• <span class="text-emerald-200">Action</span>: what can be executed now</li>
+                    <li>• <span class="text-cyan-200">Belief</span>: what should stay strategic and descriptive</li>
+                    <li>• <span class="text-rose-200">Empathy</span>: what should slow down, ask for clarification, or halt</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+                <div class="rounded-3xl border border-slate-700/80 bg-slate-950/70 p-5">
+                  <p class="badge text-xs font-semibold tracking-[0.35em] text-slate-400">Interactive Options</p>
+                  <div class="mt-4 space-y-3 font-mono text-sm">
+                    <div class="rounded-2xl border border-slate-800 bg-slate-900/70 px-4 py-3 text-cyan-200">[y] Accept</div>
+                    <div class="rounded-2xl border border-slate-800 bg-slate-900/70 px-4 py-3 text-rose-200">[n] Abort (Default)</div>
+                    <div class="rounded-2xl border border-slate-800 bg-slate-900/70 px-4 py-3 text-emerald-200">[d] Discuss & Refactor</div>
+                  </div>
+                  <p class="mt-4 text-sm leading-6 text-slate-300">
+                    The discussion path is guided by the Action / Belief / Empathy tri-principle and may pause execution autonomously when the plan is not yet safe.
+                  </p>
+                </div>
+
+                <div class="rounded-3xl border border-slate-700/80 bg-slate-950/70 p-5">
+                  <p class="badge text-xs font-semibold tracking-[0.35em] text-cyan-300/80">Planning Intercept</p>
+                  <p class="mt-3 text-sm leading-6 text-slate-300">
+                    This gate transforms raw material into an explicit plan, ensuring that any mutation is discussed, validated, and aligned before it reaches write access.
+                  </p>
+                  <div class="mt-5 grid gap-3 sm:grid-cols-3">
+                    <div class="rounded-2xl border border-emerald-400/20 bg-emerald-400/8 p-3 text-sm text-emerald-200">Action</div>
+                    <div class="rounded-2xl border border-cyan-400/20 bg-cyan-400/8 p-3 text-sm text-cyan-200">Belief</div>
+                    <div class="rounded-2xl border border-rose-400/20 bg-rose-400/8 p-3 text-sm text-rose-200">Empathy</div>
+                  </div>
+                </div>
+              </div>
+            </div>`;
+        },
+      },
+      {
+        id: 3,
+        step: 'Lv.3',
+        title: 'Final Decision Gate',
+        state: 'Default: [y/N]',
+        label: 'Final Decision Gate',
+        progress: 100,
+        signal: 'Locked sign-off',
+        render() {
+          return `
+            <div class="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
+              <div class="rounded-3xl border border-fuchsia-400/30 bg-fuchsia-400/8 p-5 sm:p-6">
+                <p class="badge text-xs font-semibold tracking-[0.35em] text-fuchsia-300/80">Lv.3 / Final Review</p>
+                <h3 class="mt-4 text-3xl font-semibold text-white sm:text-4xl">
+                  ✨ FINAL ALERT: Towards Human-Machine Resonance, is the machine truly beginning to understand you?
+                </h3>
+                <p class="mt-4 max-w-2xl text-sm leading-6 text-slate-300">
+                  The final decision gate is the human’s last word. It exists to confirm that execution can proceed without surrendering intent or control.
+                </p>
+
+                <div class="mt-6 flex flex-wrap items-center gap-3 font-mono text-sm">
+                  <span class="rounded-full border border-fuchsia-400/50 bg-fuchsia-400/15 px-4 py-2 text-fuchsia-200">[y/N] default no</span>
+                  <span class="rounded-full border border-slate-700 bg-slate-950/70 px-4 py-2 text-slate-300">Locked execution sign-off</span>
+                </div>
+
+                <button id="signOffBtn" class="pulse mt-6 inline-flex items-center gap-3 rounded-2xl border border-emerald-400/50 bg-emerald-400/15 px-5 py-3 font-semibold text-emerald-100 transition hover:-translate-y-0.5 hover:bg-emerald-400/20 disabled:cursor-not-allowed disabled:opacity-50">
+                  <span class="text-lg">⛨</span>
+                  <span>Sign off and lock execution</span>
+                </button>
+
+                <p id="signOffStatus" class="mt-4 text-sm text-slate-300">Status: awaiting human confirmation.</p>
+              </div>
+
+              <div class="space-y-4">
+                <div class="rounded-3xl border border-slate-700/80 bg-slate-950/80 p-5">
+                  <p class="badge text-xs font-semibold tracking-[0.35em] text-slate-400">Gate Summary</p>
+                  <div class="mt-4 space-y-3 text-sm text-slate-300">
+                    <p>• Default remains <span class="font-mono text-white">[y/N]</span>.</p>
+                    <p>• The sign-off is locked until the human explicitly confirms.</p>
+                    <p>• The stage exists to prevent silent execution drift.</p>
+                  </div>
+                </div>
+
+                <div class="rounded-3xl border border-fuchsia-400/20 bg-fuchsia-400/8 p-5">
+                  <p class="text-sm font-semibold text-fuchsia-200">Resonance objective</p>
+                  <p class="mt-2 text-sm leading-6 text-slate-300">
+                    This is the point where alignment becomes deliberate, auditable, and unmistakably human-led.
+                  </p>
+                </div>
+              </div>
+            </div>`;
+        },
+      },
+    ];
+
+    const stepper = document.getElementById('stepper');
+    const stageLabel = document.getElementById('stageLabel');
+    const stageEyebrow = document.getElementById('stageEyebrow');
+    const stageTitle = document.getElementById('stageTitle');
+    const stageState = document.getElementById('stageState');
+    const signalState = document.getElementById('signalState');
+    const stageContent = document.getElementById('stageContent');
+    const progressBar = document.getElementById('progressBar');
+
+    let activeStage = 0;
+
+    function renderStepper() {
+      stepper.innerHTML = stageSpecs.map((stage) => `
+        <button
+          type="button"
+          data-stage="${stage.id}"
+          aria-current="${stage.id === activeStage ? 'true' : 'false'}"
+          class="step-button flex items-center gap-3 rounded-full border border-slate-700 bg-slate-950/60 px-4 py-2 text-sm font-medium text-slate-300 transition hover:border-emerald-400/40 hover:text-white"
+        >
+          <span class="flex h-7 w-7 items-center justify-center rounded-full border border-slate-700 bg-slate-900 text-xs font-semibold text-slate-300">${stage.id === 0 ? '0' : stage.id}</span>
+          <span class="whitespace-nowrap">${stage.step}</span>
+        </button>
+      `).join('');
+
+      stepper.querySelectorAll('[data-stage]').forEach((button) => {
+        button.addEventListener('click', () => setStage(Number(button.dataset.stage)));
+      });
+    }
+
+    function setStage(stageId) {
+      activeStage = stageId;
+      const stage = stageSpecs[stageId];
+      stageLabel.textContent = stage.step;
+      stageEyebrow.textContent = stage.label;
+      stageTitle.textContent = stage.title;
+      stageState.textContent = stage.state;
+      signalState.textContent = stage.signal;
+      progressBar.style.width = `${stage.progress}%`;
+      stageContent.innerHTML = stage.render();
+      renderStepper();
+
+      const signOffBtn = document.getElementById('signOffBtn');
+      const signOffStatus = document.getElementById('signOffStatus');
+      if (signOffBtn && signOffStatus) {
+        signOffBtn.disabled = stageId !== 3;
+        signOffBtn.onclick = () => {
+          signOffStatus.textContent = 'Status: execution sign-off acknowledged. The protocol remains human-led.';
+        };
+      }
+    }
+
+    renderStepper();
+    setStage(0);
+  </script>
+</body>
+</html>

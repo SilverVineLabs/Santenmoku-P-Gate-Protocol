@@ -8,6 +8,9 @@
 
 > 🕊️ **Tolerance & Control**: Big 4 설계 원칙 가운데 네 번째는 **Tolerance**입니다. AI Agent는 인간에게 정신적 부담을 주는 존재가 아니라, 시행착오의 비용과 실행의 부담을 대신 떠안는 존재입니다. P-Gate에서는 통제권이 언제나 인간의 손에 남아 있습니다!
 
+> 🖥️ **인터랙티브 라이브 UI 데모**: 브라우저에서 4단계 인지 인터셉트 HUD를 직접 체험해 보세요:
+> 👉 **[Santenmoku P-Gate HUD Demo 실행 (`docs/p-gate-demo.html`)](./docs/p-gate-demo.html)**
+
 ## 🚀 30초 만에 코드베이스를 보호하는 Quickstart
 
 작업 흐름에 맞는 배포 방식을 선택하세요:

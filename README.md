@@ -8,6 +8,9 @@
 
 > 🕊️ **Tolerance & Control**: Among our Big 4 design principles, the 4th is **Tolerance**. The AI Agent exists to absorb the costs of trial and error and the burden of execution for humans, not to put them under mental strain. With P-Gate, control always remains in human hands!
 
+> 🖥️ **Interactive Live UI Demo**: Experience the 4-Stage Cognitive Intercept HUD directly in your browser:
+> 👉 **[Launch Santenmoku P-Gate HUD Demo (`docs/p-gate-demo.html`)](./docs/p-gate-demo.html)**
+
 ## 🚀 Quickstart: How to Protect Your Codebase in 30 Seconds
 
 Choose the deployment method that fits your workflow:

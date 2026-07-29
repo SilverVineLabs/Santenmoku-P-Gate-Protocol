@@ -8,6 +8,9 @@
 
 > 🕊️ **Khoan dung & Kiểm soát**: Trong bốn nguyên tắc thiết kế lớn của chúng ta, nguyên tắc thứ 4 là **Khoan dung**. AI Agent tồn tại để hấp thụ chi phí thử và sai cũng như gánh nặng thực thi thay cho con người, chứ không phải để đặt họ dưới áp lực tinh thần. Với P-Gate, quyền kiểm soát luôn ở trong tay con người!
 
+> 🖥️ **Bản demo UI tương tác trực tiếp**: Trải nghiệm HUD Cognitive Intercept 4 giai đoạn ngay trong trình duyệt của bạn:
+> 👉 **[Mở Santenmoku P-Gate HUD Demo (`docs/p-gate-demo.html`)](./docs/p-gate-demo.html)**
+
 ## 🚀 Khởi động nhanh: Cách bảo vệ codebase của bạn trong 30 giây
 
 Chọn phương thức triển khai phù hợp với quy trình làm việc của bạn:

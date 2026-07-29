@@ -8,6 +8,9 @@
 
 > 🕊️ **Toleransi & Kontrol**: Di antara empat prinsip desain utama kami, yang ke-4 adalah **Toleransi**. Agen AI ada untuk menyerap biaya coba-coba dan beban eksekusi bagi manusia, bukan untuk membebani mereka secara mental. Dengan P-Gate, kendali selalu tetap di tangan manusia!
 
+> 🖥️ **Demo UI Interaktif Langsung**: Rasakan HUD Cognitive Intercept 4-Tahap langsung di browser Anda:
+> 👉 **[Buka Santenmoku P-Gate HUD Demo (`docs/p-gate-demo.html`)](./docs/p-gate-demo.html)**
+
 ## 🚀 Quickstart: Cara Melindungi Basis Kode Anda dalam 30 Detik
 
 Pilih metode penerapan yang sesuai dengan alur kerja Anda:
