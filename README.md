@@ -1,6 +1,6 @@
 # 🛡️ "Don't let AI run amok on your codebase. Enforce Plan-First Cognitive Guardrails with P-Gate."
 
-> 🌐 **Languages**: [English](README.md) | [繁體中文](README_ZH_TW.md) | [簡體中文](README_CN.md) | [日本語](README_JA.md)
+> 🌐 **Languages**: [English](README.md) | [簡體中文](README_CN.md) | [繁體中文](README_ZH_TW.md) | [日本語](README_JA.md) | [한국어](README_KO.md) | [ภาษาไทย](README_TH.md) | [Bahasa Indonesia](README_ID.md) | [Tiếng Việt](README_VN.md)
 
 ### **Santenmoku P-Gate Protocol**
 
