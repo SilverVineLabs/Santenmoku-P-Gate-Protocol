@@ -1,15 +1,16 @@
-"Don't let AI run amok on your codebase. Enforce Plan-First Cognitive Guardrails with P-Gate."
+# 🛡️ "Don't let AI run amok on your codebase. Enforce Plan-First Cognitive Guardrails with P-Gate."
 
-# Santenmoku-P-Gate-Protocol
+### **Santenmoku P-Gate Protocol**
 
-> 🕊️ **Tolerance & Control**: 在我們設計的 4 大原則中，第四條正是 **Tolerance（容錯）**。AI Agent 的存在是為了替人類承受試錯成本（Trial & Error）與執行重擔，而不是讓人類感到精神緊繃。有了 P-Gate 護欄，主控權永遠在人類手中！
+*Human-Machine Cognitive Guardrails, Anti-Hallucination Intercepts & Zero-Trust Safety Protocol for AI Agents.*
 
-Santenmoku P-Gate Protocol: Human-Machine Cognitive Guardrails, Anti-Hallucination Intercepts & Zero-Trust Safety Protocol for AI Agents.
-
-<!-- Powered by SilverVine Protocol (Santenmoku Architecture) -->
-<!-- Copyright (c) 2026 SilverVine Labs (qum0x & Javier). All Rights Reserved. -->
+> 🕊️ **Tolerance & Control**: Among our Big 4 design principles, the 4th is **Tolerance**. The AI Agent exists to absorb the costs of trial and error and the burden of execution for humans, not to put them under mental strain. With P-Gate, control always remains in human hands!
 
 ---
+
+
+
+
 
 ## 🌊 The Hidden Ladders: From Blind Trust to Engineered Mastery
 
@@ -26,16 +27,80 @@ graph LR
     S3 --> S4[Stage 4: Controlled Execution]
     S4 --> S5[Stage 5: Open-Source Mastery]
     S5 -.-> S1
+```
+
+
+
+---
+
+
 
 ### 🧗 The 5 Evolutionary Stages of Human-AI Alignment
 
 1. **Unconscious Incompetence (Blind Trust)**
-   * *The Pitfall*: Naïvely trusting AI agents without safety constraints, assuming a simple prompt will yield perfect production code.
+  - *The Pitfall*: Naïvely trusting AI agents without safety constraints, assuming a simple prompt will yield perfect production code.
 2. **Cognitive Friction (The Wall of Anxiety)**
-   * *The Friction*: Experiencing AI hallucinations, unprompted file mutations, countdown timer pressure, and constant fear of issuing bad guidance.
+  - *The Friction*: Experiencing AI hallucinations, unprompted file mutations, countdown timer pressure, and constant fear of issuing bad guidance.
 3. **Guardrail Architecture (Boundaries & Fail-Safe)**
-   * *The Epiphany*: Realizing the non-negotiable need for Step 0 Git Pre-flight Snapshots, Plan-First enforcement, and P-Gate cognitive intercepts.
+  - *The Epiphany*: Realizing the non-negotiable need for Step 0 Git Pre-flight Snapshots, Plan-First enforcement, and P-Gate cognitive intercepts.
 4. **Controlled Execution (Predictable Command)**
-   * *The Mastery*: Seamlessly steering AI agents through structured multi-step plans with 100% deterministic control and instant reversibility.
+  - *The Mastery*: Seamlessly steering AI agents through structured multi-step plans with 100% deterministic control and instant reversibility.
 5. **Productization & Open-Source Mastery (Public Good)**
-   * *The Pinnacle*: Abstracting painful, real-world battle lessons into standardized cognitive protocols — turning internal guardrails into a global public good via **Santenmoku P-Gate Protocol**.
+  - *The Pinnacle*: Abstracting painful, real-world battle lessons into standardized cognitive protocols — turning internal guardrails into a global public good via **Santenmoku P-Gate Protocol**.
+
+
+
+## 🧬 SilverVine Human-to-Machine Interactive Pipeline
+
+> 💡 **From Raw Intuition to Controlled Execution**: How human spark transforms into engineered ground truth through Santenmoku P-Gate intercepts.
+
+```mermaid
+flowchart TD
+    subgraph S1 ["00-unsorted/ — Human Inspiration Sparks"]
+        A1["Human Intuition & Life Insights<br/>(Raw thoughts, flashes of inspiration, soul fuel)"]
+        A2["Characteristics: 100% Raw & Unprocessed"]
+    end
+
+    subgraph S2 ["Strategic Translation Intercept"]
+        B1["Strategic Translation & First-Principles Extraction"]
+    end
+
+    subgraph S3 ["01-daily-todos/ — Dimensional Reduction & Action Matrix"]
+        C1["🟢 Action Layer (Fully Controllable)<br/>TODAY_FOCUS.md"]
+        C2["🟡 Believe Layer (Strategy & Mindset)<br/>STRATEGIC_BELIEFS.md"]
+        C3["🔴 Fact Layer (Verification & Ground Truth)<br/>GROUND_TRUTH_CHECK.md"]
+    end
+
+    S1 -->|Extraction| B1
+    B1 -->|Dimensional Reduction| S3
+```
+
+
+
+☕ Human Control & Freeze Rule
+
+💡 P-Gate Core Cognitive Barrier: Under the Santenmoku system, humans possess "unlimited corrective power." You have absolutely no need to fear incorrect guidance; the system's underlying layers have multiple backups and dimensional reduction defenses, ensuring 100% tolerance!
+
+🛡️ Three Psychological & Safety Nets
+
+Zero Time Pressure:
+
+You always have ultimate control. If you feel your thoughts are unclear or you're worried about not thinking thoroughly enough when faced with a 5-minute countdown or an A/B multiple-choice question, this is perfectly normal. Do not make hasty decisions.
+
+Instant Freeze:
+
+Simply press Esc or type "Hold, let me think." in the dialog box, and the AI ​​Agent will immediately freeze all execution and enter a waiting state.
+
+100% Reversible:
+
+The system is backed by a Step 0 Git Pre-flight Snapshot, ensuring one-click recovery from any step (git reset), eliminating the risk of trial and error.
+
+🤝 Human-in-the-Loop:
+
+Automatic Fail-Safe Downgrade:
+
+If no human intervention or switch occurs within the specified countdown timer, the AI ​​Agent will automatically trigger a safe downgrade, forcibly switching to Plan Mode, never modifying the code arbitrarily.
+
+Perfect Co-Op Loop:
+
+The machine automatically enters Plan Mode ➔ produces a structured Plan ➔ Human approval ➔ Machine begins precise execution.
