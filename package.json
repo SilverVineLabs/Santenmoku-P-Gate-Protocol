@@ -1,0 +1,8 @@
+{
+  "name": "santenmoku-p-gate-protocol",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "seed:init": "bash bin/seed-init.sh"
+  }
+}

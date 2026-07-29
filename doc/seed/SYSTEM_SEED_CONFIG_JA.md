@@ -40,6 +40,24 @@
 
 ---
 
+### 5. SANTENMOKU 4段階認知プロトコル
+
+- **Lv.0: ブートストラップ・ゲート** — Default `[Y/n]` (Default YES)
+- **Lv.1: 認知アクノリッジ・ゲート** — Default `[y/N]` (Default NO)
+- **Lv.2: 意味検証ゲート & プランニング・インターセプト** — Default `[y/N]` (Default NO)
+  - インタラクティブオプション: `[y] Accept, [n] Abort (Default), [d] Discuss & Refactor (Guided by Action, Belief, Empathy principles & halting autonomously)`
+- **Lv.3: 最終決定ゲート** — Default `[y/N]` (Default NO)
+  - Prompt Message: "✨ FINAL ALERT: Final confirmation — Towards Human-Machine Resonance, is the machine truly beginning to understand you?"
+
+**重要ルール:** Lv.0 は YES (`Y`) をデフォルトとする。Lv.1 から Lv.3 までは必ず NO (`N`) を厳格にデフォルトとする。Lv.1~3 で 'y' が明示的に提供されない限り、Robot は直ちに HALT しなければならない。
+
+### 6. ファイル内コンテンツ変更、パス監査 & スナップショット・プロトコル
+
+- **ファイル内コンテンツ変更:** 本ファイルの内容を変更する前に、対象ブロックを正確に確認し、編集は局所的に保つ。
+- **パス監査:** 参照するすべてのパスは明示的で、workspace-rooted であり、書き込み前に確認可能でなければならない。
+- **Step 0 Git Pre-flight Snapshot:** 移動、名前変更、コンテンツ変更の前に必ず Step 0 Git Pre-flight Snapshot を取得する。
+- **移動後の義務:** いかなる移動やリネームの後も、続行前にパス監査とスナップショット状態を再確認する。
+
 ### ☕ Human Control & Freeze Rule
 
 * **Zero Time Pressure**: エージェントのプロンプト中に判断を急がない。

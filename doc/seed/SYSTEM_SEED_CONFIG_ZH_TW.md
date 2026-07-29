@@ -40,6 +40,24 @@
 
 ---
 
+### 5. SANTENMOKU 四階段認知協議
+
+- **Lv.0：啟動門** — 預設 `[Y/n]`（預設 YES）
+- **Lv.1：認知確認門** — 預設 `[y/N]`（預設 NO）
+- **Lv.2：語義驗證門與規劃攔截** — 預設 `[y/N]`（預設 NO）
+  - 互動選項：`[y] 接受， [n] 中止（預設）， [d] 討論並重構（受 Action、Belief、Empathy 原則引導，並自動停機）`
+- **Lv.3：最終決策門** — 預設 `[y/N]`（預設 NO）
+  - 提示訊息："✨ FINAL ALERT: Final confirmation — Towards Human-Machine Resonance, is the machine truly beginning to understand you?"
+
+**關鍵規則：** Lv.0 預設為 YES (`Y`)。Lv.1 到 Lv.3 必須嚴格預設為 NO (`N`)。若在 Lv.1~3 未明確輸入 'y'，機器人必須立即停止。
+
+### 6. 檔案內內容變更、路徑稽核與快照協議
+
+- **檔案內內容變更：** 在修改本檔任何內容前，先確認精確目標區塊，並將變更限制在局部範圍。
+- **路徑稽核：** 所有引用路徑都必須明確、以工作區根目錄為準，且在寫入前可被審核。
+- **Step 0 Git Pre-flight Snapshot：** 在任何移動、重新命名或內容變更之前，都必須先完成 Step 0 Git Pre-flight Snapshot。
+- **移動後義務：** 任何移動或重新命名完成後，都必須重新驗證路徑稽核與快照狀態，再繼續下一步。
+
 ### ☕ 人類控制與 Freeze 規則
 
 * **零時間壓力**：在 agent prompts 期間絕對不要匆忙做決定。

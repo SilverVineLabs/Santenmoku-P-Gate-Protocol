@@ -1,16 +1,45 @@
 # 🛡️ "Don't let AI run amok on your codebase. Enforce Plan-First Cognitive Guardrails with P-Gate."
 
+> 🌐 **Languages**: [English](README.md) | [繁體中文](README_ZH_TW.md) | [簡體中文](README_CN.md) | [日本語](README_JA.md)
+
 ### **Santenmoku P-Gate Protocol**
 
 *Human-Machine Cognitive Guardrails, Anti-Hallucination Intercepts & Zero-Trust Safety Protocol for AI Agents.*
 
 > 🕊️ **Tolerance & Control**: Among our Big 4 design principles, the 4th is **Tolerance**. The AI Agent exists to absorb the costs of trial and error and the burden of execution for humans, not to put them under mental strain. With P-Gate, control always remains in human hands!
 
+## 🚀 Quickstart: How to Protect Your Codebase in 30 Seconds
+
+Choose the deployment method that fits your workflow:
+
+### Option A: One-Line CLI Bootstrapper (Recommended)
+Run the automated seed loader inside your terminal to choose your primary language (EN, CN, ZH_TW, JA, KO, TH, ID, VN) and lock down your AI Agent:
+
+```bash
+./bin/seed-init.sh
+# Or if using npm scripts:
+npm run seed:init
+```
+
 ---
 
+## 🎯 What is P-Gate?
 
+> 💡 **P-Gate (Plan-First & Cognitive Guardrail Protocol)**: A zero-trust safety and cognitive defense framework engineered for human-AI agent collaboration.
 
+For developers and users new to the protocol, the **"P" in P-Gate stands for 3 Core Pillars (The 3 Pillars of P)**, designed layer-by-layer to preserve human intent and control:
 
+1. **Plan-First**:
+   * Rejects unprompted AI mutations or silent file edits. Every state change requires a structured execution plan approved by the human before write access is granted.
+2. **Psychological Safety**:
+   * Eliminates anxiety through 100% reversible Step 0 Pre-flight Snapshots and instant freeze triggers (`Esc` / `Hold, let me think.`), granting the human absolute freedom to experiment without risk.
+3. **P-Gate Cognitive Intercepts**:
+   * Enforces structured multi-stage confirmation gates (Lv.0 to Lv.3) at critical decision checkpoints (state writes, deployment, and hotkey signing) to ensure true human-machine alignment.
+
+* **Not a rigid blocker**: P-Gate is a psychological safety net that ensures sovereignty remains permanently in human hands.
+* **True Delegation**: It offloads the mental strain of trial and error to the AI Agent, returning a calm, deterministic decision-making space back to the developer.
+
+---
 
 ## 🌊 The Hidden Ladders: From Blind Trust to Engineered Mastery
 

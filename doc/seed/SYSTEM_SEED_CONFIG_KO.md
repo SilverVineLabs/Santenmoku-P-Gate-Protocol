@@ -40,6 +40,24 @@
 
 ---
 
+### 5. SANTENMOKU 4단계 인지 프로토콜
+
+- **Lv.0: 부트스트랩 게이트** — Default `[Y/n]` (Default YES)
+- **Lv.1: 인지 확인 게이트** — Default `[y/N]` (Default NO)
+- **Lv.2: 의미 검증 게이트 & 계획 인터셉트** — Default `[y/N]` (Default NO)
+  - 인터랙티브 옵션: `[y] Accept, [n] Abort (Default), [d] Discuss & Refactor (Guided by Action, Belief, Empathy principles & halting autonomously)`
+- **Lv.3: 최종 결정 게이트** — Default `[y/N]` (Default NO)
+  - Prompt Message: "✨ FINAL ALERT: Final confirmation — Towards Human-Machine Resonance, is the machine truly beginning to understand you?"
+
+**중요 규칙:** Lv.0 는 YES (`Y`) 를 기본값으로 한다. Lv.1 부터 Lv.3 까지는 반드시 NO (`N`) 를 엄격한 기본값으로 해야 한다. Lv.1~3 동안 'y' 가 명시적으로 제공되지 않으면 Robot 은 즉시 HALT 해야 한다.
+
+### 6. 파일 내 콘텐츠 변경, 경로 감사 & 스냅샷 프로토콜
+
+- **파일 내 콘텐츠 변경:** 이 파일의 내용을 변경하기 전에 정확한 대상 블록을 확인하고, 수정 범위는 국소적으로 유지한다.
+- **경로 감사:** 참조하는 모든 경로는 명시적이어야 하며, workspace-rooted 여야 하고, 쓰기 전에 검토 가능해야 한다.
+- **Step 0 Git Pre-flight Snapshot:** 이동, 이름 변경, 콘텐츠 변경 전에 반드시 Step 0 Git Pre-flight Snapshot 을 수행한다.
+- **이동 후 의무:** 어떤 이동이나 이름 변경 이후에도 계속하기 전에 경로 감사와 스냅샷 상태를 다시 검증해야 한다.
+
 ### ☕ Human Control & Freeze Rule
 
 * **Zero Time Pressure**: 에이전트 프롬프트 중에는 결정을 서두르지 않는다.

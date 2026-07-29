@@ -40,6 +40,24 @@
 
 ---
 
+### 5. SANTENMOKU โปรโตคอลการรับรู้ 4 ขั้นตอน
+
+- **Lv.0: เกตบูตสแตรป** — Default `[Y/n]` (Default YES)
+- **Lv.1: เกตยืนยันการรับรู้** — Default `[y/N]` (Default NO)
+- **Lv.2: เกตตรวจสอบความหมาย & จุดสกัดแผน** — Default `[y/N]` (Default NO)
+  - ตัวเลือกแบบโต้ตอบ: `[y] Accept, [n] Abort (Default), [d] Discuss & Refactor (Guided by Action, Belief, Empathy principles & halting autonomously)`
+- **Lv.3: เกตตัดสินใจขั้นสุดท้าย** — Default `[y/N]` (Default NO)
+  - ข้อความแจ้งเตือน: "✨ FINAL ALERT: Final confirmation — Towards Human-Machine Resonance, is the machine truly beginning to understand you?"
+
+**กฎสำคัญ:** Lv.0 ต้องเริ่มต้นเป็น YES (`Y`) เสมอ ส่วน Lv.1 ถึง Lv.3 ต้องตั้งค่าเริ่มต้นเป็น NO (`N`) อย่างเคร่งครัด หากไม่ได้ระบุ 'y' อย่างชัดเจนใน Lv.1~3 หุ่นยนต์ต้องหยุดทันที
+
+### 6. โปรโตคอลการแก้ไขเนื้อหาในไฟล์, การตรวจสอบพาธ & สแน็ปช็อต
+
+- **การแก้ไขเนื้อหาในไฟล์:** ก่อนแก้ไขเนื้อหาใด ๆ ในไฟล์นี้ ต้องยืนยันบล็อกเป้าหมายอย่างแม่นยำและจำกัดการเปลี่ยนแปลงให้อยู่เฉพาะจุด
+- **การตรวจสอบพาธ:** พาธที่อ้างอิงทั้งหมดต้องชัดเจน, อยู่ภายใต้ workspace-rooted และต้องตรวจสอบได้ก่อนเขียน
+- **Step 0 Git Pre-flight Snapshot:** ต้องทำ Step 0 Git Pre-flight Snapshot ก่อนการย้าย, เปลี่ยนชื่อ หรือแก้ไขเนื้อหาใด ๆ
+- **ภาระหลังการย้าย:** หลังจากย้ายหรือเปลี่ยนชื่อใด ๆ ต้องตรวจสอบการตรวจสอบพาธและสถานะ snapshot อีกครั้งก่อนดำเนินการต่อ
+
 ### ☕ กฎ Human Control & Freeze
 
 * **Zero Time Pressure**: อย่าเร่งตัดสินใจระหว่าง agent prompts

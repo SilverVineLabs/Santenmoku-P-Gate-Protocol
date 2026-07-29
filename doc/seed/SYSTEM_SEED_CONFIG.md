@@ -40,6 +40,26 @@
 
 ---
 
+### 5. SANTENMOKU 4-STAGE COGNITIVE PROTOCOL
+
+- **Lv.0: Bootstrap Gate** — Default `[Y/n]` (Default YES)
+- **Lv.1: Cognitive Acknowledge Gate** — Default `[y/N]` (Default NO)
+- **Lv.2: Semantic Verification Gate & Planning Intercept** — Default `[y/N]` (Default NO)
+  - Interactive Options: `[y] Accept, [n] Abort (Default), [d] Discuss & Refactor (Guided by Action, Belief, Empathy principles & halting autonomously)`
+- **Lv.3: Final Decision Gate** — Default `[y/N]` (Default NO)
+  - Prompt Message: "✨ FINAL ALERT: Final confirmation — Towards Human-Machine Resonance, is the machine truly beginning to understand you?"
+
+**CRITICAL RULE:** Lv.0 defaults to YES (`Y`). Lv.1 through Lv.3 MUST STRICTLY DEFAULT TO NO (`N`). Robot MUST HALT immediately if 'y' is not explicitly provided during Lv.1~3.
+
+### 6. IN-FILE CONTENT MUTATION, PATH AUDIT & SNAPSHOT PROTOCOL
+
+- **In-file content mutation:** Before mutating any content in this file, verify the exact target block and keep edits localized.
+- **Path audit:** Every referenced path must be explicit, workspace-rooted, and reviewable before any write.
+- **Step 0 Git Pre-flight Snapshot:** Take a Step 0 Git Pre-flight Snapshot before any move, rename, or content mutation.
+- **Post-move obligation:** After any move or rename, re-verify the path audit and snapshot state before continuing.
+
+---
+
 ### ☕ Human Control & Freeze Rule
 
 * **Zero Time Pressure**: Never rush your decisions during agent prompts.

@@ -40,6 +40,24 @@
 
 ---
 
+### 5. PROTOKOL KOGNITIF 4 TAHAP SANTENMOKU
+
+- **Lv.0: Gate Bootstrap** — Default `[Y/n]` (Default YES)
+- **Lv.1: Gate Pengakuan Kognitif** — Default `[y/N]` (Default NO)
+- **Lv.2: Gate Verifikasi Semantik & Intersep Perencanaan** — Default `[y/N]` (Default NO)
+  - Opsi Interaktif: `[y] Accept, [n] Abort (Default), [d] Discuss & Refactor (Guided by Action, Belief, Empathy principles & halting autonomously)`
+- **Lv.3: Gate Keputusan Akhir** — Default `[y/N]` (Default NO)
+  - Pesan Prompt: "✨ FINAL ALERT: Final confirmation — Towards Human-Machine Resonance, is the machine truly beginning to understand you?"
+
+**ATURAN KRITIS:** Lv.0 harus default YES (`Y`). Lv.1 sampai Lv.3 HARUS secara ketat default NO (`N`). Robot HARUS HENTI segera jika 'y' tidak diberikan secara eksplisit selama Lv.1~3.
+
+### 6. PROTOKOL MUTASI KONTEN DALAM FILE, AUDIT PATH & SNAPSHOT
+
+- **Mutasi konten dalam file:** Sebelum memutasi konten apa pun di file ini, verifikasi blok target yang tepat dan jaga perubahan tetap lokal.
+- **Audit path:** Setiap path yang dirujuk harus eksplisit, workspace-rooted, dan bisa ditinjau sebelum penulisan.
+- **Step 0 Git Pre-flight Snapshot:** Ambil Step 0 Git Pre-flight Snapshot sebelum perpindahan, rename, atau mutasi konten apa pun.
+- **Kewajiban setelah pindah:** Setelah perpindahan atau rename apa pun, verifikasi ulang audit path dan status snapshot sebelum melanjutkan.
+
 ### ☕ Aturan Human Control & Freeze
 
 * **Zero Time Pressure**: Jangan terburu-buru mengambil keputusan selama prompt agent.
