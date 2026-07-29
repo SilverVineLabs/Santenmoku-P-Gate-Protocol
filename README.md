@@ -1,11 +1,15 @@
-"Don't let AI run amok on your codebase. Enforce Plan-First Cognitive Guardrails with P-Gate.
+"Don't let AI run amok on your codebase. Enforce Plan-First Cognitive Guardrails with P-Gate."
 
 # Santenmoku-P-Gate-Protocol
-Santenmoku P-Gate Protocol: Human-Machine Cognitive Guardrails, Anti-Hallucination Intercepts &amp; Zero-Trust Safety Protocol for AI Agents.
 
+> 🕊️ **Tolerance & Control**: 在我們設計的 4 大原則中，第四條正是 **Tolerance（容錯）**。AI Agent 的存在是為了替人類承受試錯成本（Trial & Error）與執行重擔，而不是讓人類感到精神緊繃。有了 P-Gate 護欄，主控權永遠在人類手中！
+
+Santenmoku P-Gate Protocol: Human-Machine Cognitive Guardrails, Anti-Hallucination Intercepts & Zero-Trust Safety Protocol for AI Agents.
 
 <!-- Powered by SilverVine Protocol (Santenmoku Architecture) -->
 <!-- Copyright (c) 2026 SilverVine Labs (qum0x & Javier). All Rights Reserved. -->
+
+---
 
 ## 🌊 The Hidden Ladders: From Blind Trust to Engineered Mastery
 
@@ -14,11 +18,14 @@ Santenmoku P-Gate Protocol: Human-Machine Cognitive Guardrails, Anti-Hallucinati
 Most engineering teams foolishly assume that AI adoption follows a simple 3-step linear path: **Ignorance ➔ Execution ➔ Mastery**.
 
 In reality, production-grade AI engineering requires navigating five critical, often overlooked evolutionary stages:
-[ Stage 1: Blind Trust ] ──► [ Stage 2: Cognitive Friction ] ──► [ Stage 3: Guardrail Architecture ]
-│
-[ Stage 5: Open-Source Mastery ] ◄── [ Stage 4: Controlled Execution ] ◄─────┘
 
----
+```mermaid
+graph LR
+    S1[Stage 1: Blind Trust] --> S2[Stage 2: Cognitive Friction]
+    S2 --> S3[Stage 3: Guardrail Architecture]
+    S3 --> S4[Stage 4: Controlled Execution]
+    S4 --> S5[Stage 5: Open-Source Mastery]
+    S5 -.-> S1
 
 ### 🧗 The 5 Evolutionary Stages of Human-AI Alignment
 
